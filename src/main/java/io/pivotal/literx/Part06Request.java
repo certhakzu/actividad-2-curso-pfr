@@ -51,7 +51,7 @@ public class Part06Request {
 		return repository.findAll()
 				.doOnSubscribe(subscription -> System.out.println("Starring:"))
 				.doOnNext(user -> System.out.println(user.getFirstname().concat(" ").concat(user.getLastname())))
-				.doFinally(signalType -> System.out.println("The end!"));
+				.doOnComplete(() -> System.out.println("The end!"));
 	}
 
 }
